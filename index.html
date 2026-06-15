@@ -149,4 +149,2402 @@ header {
   position: fixed; bottom: 24px; right: 16px; z-index: 200;
   background: var(--surface2); border: 1px solid var(--border);
   color: var(--red); border-radius: 24px; padding: 10px 16px;
-  font-
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.5); display: flex; align-items: center; gap: 6px;
+  transition: all .15s;
+}
+.fab:hover { border-color: var(--red); }
+
+/* RESUMO */
+.resumo-wrap { padding: 10px 12px; }
+.week-select-wrap { margin-bottom: 12px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.week-select-wrap::-webkit-scrollbar { display: none; }
+.week-select-wrap .week-btn { padding: 5px 10px; }
+
+.status-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
+.status-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 12px; text-align: center;
+}
+.status-card .sc-num { font-family: 'Bebas Neue', cursive; font-size: 32px; line-height: 1; }
+.status-card .sc-label { font-size: 10px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 2px; }
+.status-card.missing .sc-num { color: var(--red); }
+.status-card.low .sc-num { color: var(--yellow); }
+.status-card.ok .sc-num { color: var(--green); }
+
+.action-btns { display: flex; gap: 8px; margin-bottom: 14px; }
+.action-btn {
+  flex: 1; padding: 9px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--text); font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 500; cursor: pointer; transition: all .15s;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.action-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+.section-title {
+  font-family: 'Bebas Neue', cursive; font-size: 16px; letter-spacing: 0.5px;
+  margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+}
+.section-title.red { color: var(--red); }
+.section-title.yellow { color: var(--yellow); }
+.section-title.full { color: var(--text-muted); }
+
+.alert-cards { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.alert-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 8px 10px; display: flex; align-items: center; gap: 8px;
+}
+.alert-card.missing { border-left: 3px solid var(--red); }
+.alert-card.low { border-left: 3px solid var(--yellow); }
+.alert-info { flex: 1; min-width: 0; }
+.alert-name { font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.alert-detail { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+.alert-qty { font-family: 'DM Mono', monospace; font-size: 16px; font-weight: 500; }
+.alert-card.missing .alert-qty { color: var(--red); }
+.alert-card.low .alert-qty { color: var(--yellow); }
+
+/* TABELA COMPLETA */
+.full-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 80px; }
+.full-table th { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); font-weight: 400; text-transform: uppercase; letter-spacing: 0.3px; }
+.full-table td { padding: 7px 8px; border-bottom: 1px solid rgba(255,255,255,.04); }
+.full-table tr.cat-row td { background: var(--surface2); font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; padding: 5px 8px; }
+.full-table tr:hover td { background: var(--surface2); }
+.status-badge {
+  font-family: 'DM Mono', monospace; font-size: 9px; padding: 2px 6px; border-radius: 3px;
+  font-weight: 500; text-transform: uppercase;
+}
+.status-badge.missing { background: var(--red-dim); color: var(--red); }
+.status-badge.low { background: var(--yellow-dim); color: var(--yellow); }
+.status-badge.ok { background: var(--green-dim); color: var(--green); }
+.status-badge.none { color: var(--text-muted); background: var(--surface3); }
+
+/* MINIMOS */
+.min-list { padding: 0 10px 80px; display: flex; flex-direction: column; gap: 6px; }
+.min-item {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 8px 12px; display: flex; align-items: center; gap: 8px;
+}
+.min-name { flex: 1; min-width: 0; }
+.min-name-text { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.min-code-text { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); }
+.min-ctrl { display: flex; align-items: center; gap: 5px; }
+.min-input {
+  width: 48px; text-align: center; background: var(--surface3); border: 1px solid var(--border);
+  border-radius: 4px; color: var(--text); font-family: 'DM Mono', monospace; font-size: 16px;
+  font-weight: 500; padding: 4px; outline: none; appearance: textfield;
+}
+.min-input::-webkit-outer-spin-button, .min-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.min-input:focus { border-color: var(--amber); }
+.min-input.zero { color: var(--text-muted); }
+
+/* MODAL CONFIRM */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 1000;
+  display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.show { display: flex; }
+.modal {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; max-width: 320px; width: 100%;
+}
+.modal-title { font-family: 'Bebas Neue', cursive; font-size: 20px; color: var(--red); margin-bottom: 8px; }
+.modal-text { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
+.modal-btns { display: flex; gap: 8px; }
+.modal-btn {
+  flex: 1; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+  cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+}
+.modal-btn.cancel { background: none; color: var(--text-muted); }
+.modal-btn.confirm { background: var(--red); border-color: var(--red); color: #fff; }
+
+/* EMPTY STATE */
+.empty { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+.empty-icon { font-size: 32px; margin-bottom: 8px; }
+.empty-text { font-size: 13px; }
+
+/* POPOVER AJUSTE */
+.adj-popover {
+  position: fixed; z-index: 900;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.6);
+  display: none; flex-direction: column; gap: 8px;
+  min-width: 180px;
+}
+.adj-popover.show { display: flex; }
+.adj-popover-title {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--text-muted);
+}
+.adj-popover-title.plus { color: var(--green); }
+.adj-popover-title.minus { color: var(--red); }
+.adj-popover-row { display: flex; gap: 6px; align-items: center; }
+.adj-popover-input {
+  flex: 1; padding: 7px 10px; background: var(--surface3);
+  border: 1px solid var(--border); border-radius: 6px;
+  color: var(--text); font-family: 'DM Mono', monospace;
+  font-size: 18px; font-weight: 500; text-align: center;
+  outline: none; width: 80px;
+  -webkit-appearance: none; -moz-appearance: textfield; appearance: textfield;
+}
+.adj-popover-input::-webkit-outer-spin-button,
+.adj-popover-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.adj-popover-input:focus { border-color: var(--amber); }
+.adj-popover-confirm {
+  padding: 7px 14px; border: none; border-radius: 6px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: opacity .15s;
+}
+.adj-popover-confirm.plus { background: var(--green); color: #fff; }
+.adj-popover-confirm.minus { background: var(--red); color: #fff; }
+.adj-popover-confirm:active { opacity: 0.7; }
+.adj-popover-cancel {
+  background: none; border: none; color: var(--text-muted);
+  font-size: 11px; font-family: 'DM Sans', sans-serif;
+  cursor: pointer; text-align: center; padding: 2px 0;
+}
+.adj-popover-cancel:hover { color: var(--text); }
+
+/* QTY EDITÁVEL */
+.qty-display { cursor: pointer; }
+.qty-display:hover { color: var(--amber) !important; }
+.qty-input-edit {
+  font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 500;
+  color: var(--amber); min-width: 36px; width: 48px; text-align: center;
+  background: var(--surface3); border: 1px solid var(--amber);
+  border-radius: 4px; outline: none; padding: 2px 4px;
+  -webkit-appearance: none; -moz-appearance: textfield; appearance: textfield;
+}
+.qty-input-edit::-webkit-outer-spin-button,
+.qty-input-edit::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--surface3); border: 1px solid var(--border); color: var(--text);
+  padding: 8px 16px; border-radius: 20px; font-size: 13px; z-index: 500;
+  opacity: 0; transition: all .3s; pointer-events: none; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 400px) {
+  .status-cards { grid-template-columns: repeat(3,1fr); }
+  .status-card .sc-num { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TELA DE LOGIN -->
+<div id="login-screen" style="position:fixed; inset:0; background:#0f0e0d; z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#1a1917; border:1px solid #2e2c2a; padding:30px; border-radius:8px; width:100%; max-width:340px; text-align:center;">
+    <h2 id="auth-title" style="font-family:'Bebas Neue', cursive; color:#e8a020; font-size:28px; margin-bottom:20px;">Black Skull Bier <br><span style="font-size:16px; color:#8a8780;">Acesso Restrito</span></h2>
+    <input type="text" id="login-username" placeholder="Nome de Usuário" style="width:100%; padding:10px; margin-bottom:10px; background:#222120; border:1px solid #2e2c2a; color:#fff; border-radius:5px; outline:none; text-transform: lowercase;">
+    <input type="password" id="login-pwd" placeholder="Senha" style="width:100%; padding:10px; margin-bottom:20px; background:#222120; border:1px solid #2e2c2a; color:#fff; border-radius:5px; outline:none;">
+    <button id="btn-login" onclick="handleLogin()" style="width:100%; padding:12px; background:#e8a020; border:none; color:#000; font-weight:bold; border-radius:5px; cursor:pointer; display:block;">Entrar</button>
+    <button id="btn-signup" onclick="handleSignUp()" style="width:100%; padding:12px; background:#4caf6f; border:none; color:#fff; font-weight:bold; border-radius:5px; cursor:pointer; display:none;">Criar Conta</button>
+    <p id="toggle-auth-text" style="font-size:12px; color:#8a8780; margin-top:15px; cursor:pointer;" onclick="alternarTelaAuth(true)">
+      Não tem uma conta? <span style="color:#e8a020; text-decoration:underline;">Cadastre-se aqui</span>
+    </p>
+    <p id="login-error" style="color:#e05555; font-size:12px; margin-top:10px; display:none;"></p>
+  </div>
+</div>
+
+<header>
+  <div class="header-top">
+    <div class="logo">Black Skull Bier<span>Controle de Estoque</span></div>
+    <button class="btn-logout" id="btnLogout" onclick="handleLogout()">Sair 🚪</button>
+  </div>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="setTab('contar')">📦 Contar</button>
+    <button class="tab-btn" onclick="setTab('resumo')">📊 Resumo</button>
+    <button class="tab-btn" onclick="setTab('minimos')">⚙️ Mínimos</button>
+  </div>
+</header>
+
+<div class="week-bar" id="weekBar">
+  <button class="week-btn active" onclick="setWeek(1)">1ª Sem</button>
+  <button class="week-btn" onclick="setWeek(2)">2ª Sem</button>
+  <button class="week-btn" onclick="setWeek(3)">3ª Sem</button>
+  <button class="week-btn" onclick="setWeek(4)">4ª Sem</button>
+  <button class="week-btn" onclick="setWeek(5)">5ª Sem</button>
+</div>
+
+<!-- ABA CONTAR -->
+<div class="main" id="tab-contar">
+  <div class="search-wrap">
+    <input class="search-input" id="searchInput" type="search" placeholder="🔍 Buscar bebida…" oninput="renderContar()">
+  </div>
+  <div id="contarList"></div>
+  <div style="height:80px"></div>
+</div>
+
+<!-- ABA RESUMO -->
+<div class="main no-weekbar" id="tab-resumo" style="display:none">
+  <div class="resumo-wrap">
+    <div class="week-select-wrap" id="resumoWeekBar"></div>
+    <div class="action-btns">
+      <button class="action-btn" onclick="exportCSV()">⬇ CSV</button>
+      <button class="action-btn" onclick="gerarPDF()">📄 PDF</button>
+    </div>
+    <div class="status-cards">
+      <div class="status-card missing"><div class="sc-num" id="sc-missing">0</div><div class="sc-label">Faltando</div></div>
+      <div class="status-card low"><div class="sc-num" id="sc-low">0</div><div class="sc-label">Baixo</div></div>
+      <div class="status-card ok"><div class="sc-num" id="sc-ok">0</div><div class="sc-label">OK</div></div>
+    </div>
+    <div id="resumoContent"></div>
+  </div>
+</div>
+
+<!-- ABA MINIMOS -->
+<div class="main no-weekbar" id="tab-minimos" style="display:none">
+  <div style="padding:10px 12px 6px">
+    <input class="search-input" id="searchMin" type="search" placeholder="🔍 Buscar bebida…" oninput="renderMinimos()">
+  </div>
+  <div class="min-list" id="minimosList"></div>
+</div>
+
+<button class="fab" id="fabClear" onclick="showClearModal()">🗑 Limpar semana</button>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="clearModal">
+  <div class="modal">
+    <div class="modal-title">Limpar Semana</div>
+    <div class="modal-text" id="clearModalText">Zerar todas as contagens da semana atual?</div>
+    <div class="modal-btns">
+      <button class="modal-btn cancel" onclick="hideModal()">Cancelar</button>
+      <button class="modal-btn confirm" onclick="clearWeek()">Zerar</button>
+    </div>
+  </div>
+</div>
+
+<div class="adj-popover" id="adjPopover">
+  <div class="adj-popover-title" id="adjPopoverTitle">Adicionar</div>
+  <div class="adj-popover-row">
+    <input class="adj-popover-input" id="adjPopoverInput" type="number" min="1" value="1">
+    <button class="adj-popover-confirm" id="adjPopoverConfirm" onclick="confirmAdj()">OK</button>
+  </div>
+  <button class="adj-popover-cancel" onclick="closePopover()">cancelar</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── CONFIGURAÇÃO DO SUPABASE CONFIGURADA ────────────────────────────────────
+const SUPABASE_URL = "https://lsbqqbjzrdobfwfakgvu.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_VkD6dhm2zgqtX3PaaynaAA_tNZToGLg";
+
+const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentUser = null;
+
+// ─── DADOS DAS CATEGORIAS ────────────────────────────────────────────────────
+const CATEGORIES = [
+  {
+    nome: "Coca-Cola & Pepsi",
+    itens: [
+      {id:23, nome:"Coca-Cola"},
+      {id:24, nome:"Coca-Cola Zero"},
+      {id:1721, nome:"Coca-Cola 2 Litros"},
+      {id:3141, nome:"Coca-Cola Zero 2L"},
+      {id:29, nome:"Pepsi"},
+      {id:30, nome:"Pepsi Black"},
+    ]
+  },
+  {
+    nome: "Fanta & Sprite",
+    itens: [
+      {id:25, nome:"Fanta Laranja"},
+      {id:26, nome:"Fanta Uva"},
+      {id:3259, nome:"Fanta Laranja Zero"},
+      {id:28, nome:"Sprite"},
+      {id:3260, nome:"Sprite Zero"},
+    ]
+  },
+  {
+    nome: "Guaraná",
+    itens: [
+      {id:32, nome:"Guaraná"},
+      {id:33, nome:"Guaraná Zero"},
+      {id:34, nome:"Guaraná 2 Litros"},
+      {id:56, nome:"Guaraná Açaí"},
+      {id:57, nome:"Guaraná Power"},
+    ]
+  },
+  {
+    nome: "Schweppes & Tônica",
+    itens: [
+      {id:27, nome:"Schweppes"},
+      {id:3942, nome:"Schweppes Tônica"},
+      {id:35, nome:"Fys Tônica"},
+      {id:37, nome:"Fys Limão Siciliano"},
+      {id:3945, nome:"Tônica Antarctica"},
+    ]
+  },
+  {
+    nome: "Sucos & Del Valle",
+    itens: [
+      {id:44, nome:"Del Valle Uva"},
+      {id:45, nome:"Del Valle Pêssego"},
+      {id:46, nome:"Del Valle Maracujá"},
+      {id:3360, nome:"Suco Laranja Mitz"},
+      {id:33601, nome:"Suco Uva Mitz"},
+      {id:2058, nome:"Matte Leão"},
+      {id:2059, nome:"Matte Leão Limão"},
+    ]
+  },
+  {
+    nome: "Água & H2O",
+    itens: [
+      {id:63, nome:"H2O"},
+      {id:64, nome:"H2O Limoneto"},
+      {id:59, nome:"Água de Coco"},
+    ]
+  },
+  {
+    nome: "Isotônicos — Gatorade",
+    itens: [
+      {id:1649, nome:"Gatorade Uva"},
+      {id:1650, nome:"Gatorade Laranja"},
+      {id:1651, nome:"Gatorade Tangerina"},
+      {id:1652, nome:"Gatorade Limão"},
+      {id:3719, nome:"Gatorade Blueberry"},
+      {id:3859, nome:"Gatorade Morango"},
+    ]
+  },
+  {
+    nome: "Isotônicos — Powerade",
+    itens: [
+      {id:3887, nome:"Powerade Mix Frutas"},
+      {id:3894, nome:"Powerade Uva"},
+      {id:3925, nome:"Powerade Laranja"},
+      {id:3926, nome:"Powerade Limão"},
+      {id:3927, nome:"Powerade Frutas Tropicais"},
+      {id:3932, nome:"Powerade Tangerina"},
+      {id:3934, nome:"Powerade Mint Blast"},
+    ]
+  },
+  {
+    nome: "Energéticos",
+    itens: [
+      {id:71, nome:"Monster"},
+      {id:3933, nome:"Monster Zero"},
+    ]
+  },
+  {
+    nome: "Legger",
+    itens: [
+      {id:3189, nome:"Legger Citrus"},
+      {id:3404, nome:"Legger Açaí"},
+      {id:3405, nome:"Legger Limão"},
+      {id:3406, nome:"Legger Guaraná"},
+    ]
+  },
+  {
+    nome: "Cini",
+    itens: [
+      {id:3533, nome:"Cini Framboesa 2L"},
+      {id:3534, nome:"Cini Laranjinha 2L"},
+      {id:3911, nome:"Cini Guaraná 2L"},
+      {id:2540, nome:"Cini Framboesa 500ml"},
+      {id:3541, nome:"Cini Abacaxi 500ml"},
+      {id:3542, nome:"Cini Gengibirra 500ml"},
+      {id:3543, nome:"Cini Matte Pêssego"},
+      {id:3544, nome:"Cini Matte Limão"},
+      {id:3936, nome:"Cini Framboesa Lata"},
+    ]
+  },
+  {
+    nome: "Gasosas & Outros",
+    itens: [
+      {id:38, nome:"Itubaina"},
+      {id:58, nome:"Chocomilk"},
+      {id:3538, nome:"Gasosa Framboesa 600ml"},
+      {id:3539, nome:"Gasosa Abacaxi 600ml"},
+    ]
+  },
+];
+
+// ─── STATE LOCAL ─────────────────────────────────────────────────────────────
+let currentTab = 'contar';
+let currentWeek = 1;
+let resumoWeek = 'all';
+
+let DB_STOCK = {};
+let DB_MINS = {};
+
+// ─── CONEXÃO COM SUPABASE ────────────────────────────────────────────────────
+async function checkUser() {
+  const { data: { session } } = await _supabase.auth.getSession();
+  if (session && session.user) {
+    currentUser = session.user;
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('btnLogout').style.display = 'block';
+    await fetchAllData();
+    setTab('contar');
+  } else {
+    currentUser = null;
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('btnLogout').style.display = 'none';
+  }
+}
+
+async function fetchAllData() {
+  if (!currentUser) return;
+  
+  const { data: stockData } = await _supabase
+    .from('estoque_bebidas')
+    .select('semana, item_id, quantidade');
+    
+  const { data: minData } = await _supabase
+    .from('minimos_bebidas')
+    .select('item_id, minimo_id');
+
+  DB_STOCK = {1:{}, 2:{}, 3:{}, 4:{}, 5:{}};
+  if (stockData) {
+    stockData.forEach(row => {
+      if(DB_STOCK[row.semana]) DB_STOCK[row.semana][row.item_id] = row.quantidade;
+    });
+  }
+
+  DB_MINS = {};
+  if (minData) {
+    minData.forEach(row => {
+      DB_MINS[row.item_id] = row.minimo_id;
+    });
+  }
+}
+
+function getQty(id, week) { return (DB_STOCK[week] && DB_STOCK[week][id]) || 0; }
+
+async function setQty(id, week, val) {
+  const finalVal = Math.max(0, val);
+  if (!DB_STOCK[week]) DB_STOCK[week] = {};
+  DB_STOCK[week][id] = finalVal;
+
+  await _supabase
+    .from('estoque_bebidas')
+    .upsert({ 
+      user_id: currentUser.id, 
+      semana: week, 
+      item_id: id, 
+      quantidade: finalVal 
+    }, { onConflict: 'user_id,semana,item_id' });
+}
+
+function getMin(id) { return DB_MINS[id] || 0; }
+
+async function setMin(id, val) {
+  const finalVal = Math.max(0, val);
+  DB_MINS[id] = finalVal;
+
+  await _supabase
+    .from('minimos_bebidas')
+    .upsert({ 
+      user_id: currentUser.id, 
+      item_id: id, 
+      minimo_id: finalVal 
+    }, { onConflict: 'user_id,item_id' });
+}
+
+function itemStatus(qty, min) {
+  if (min === 0) return qty > 0 ? 'ok' : 'none';
+  if (qty < min) return 'missing';
+  if (qty < min * 1.5) return 'low';
+  return 'ok';
+}
+
+// ─── LÓGICA DE AUTENTICAÇÃO ──────────────────────────────────────────────────
+function alternarTelaAuth(querCadastrar) {
+  const title = document.getElementById('auth-title');
+  const btnLogin = document.getElementById('btn-login');
+  const btnSignUp = document.getElementById('btn-signup');
+  const toggleText = document.getElementById('toggle-auth-text');
+  const errorEl = document.getElementById('login-error');
+  
+  errorEl.style.display = 'none';
+
+  if (querCadastrar) {
+    title.innerHTML = "Black Skull Bier <br><span style='font-size:16px; color:#8a8780;'>Nova Conta</span>";
+    btnLogin.style.display = 'none';
+    btnSignUp.style.display = 'block';
+    toggleText.innerHTML = "Já tem uma conta? <span style='color:#e8a020; text-decoration:underline;'>Faça login</span>";
+    toggleText.setAttribute('onclick', 'alternarTelaAuth(false)');
+  } else {
+    title.innerHTML = "Black Skull Bier <br><span style='font-size:16px; color:#8a8780;'>Acesso Restrito</span>";
+    btnLogin.style.display = 'block';
+    btnSignUp.style.display = 'none';
+    toggleText.innerHTML = "Não tem uma conta? <span style='color:#e8a020; text-decoration:underline;'>Cadastre-se aqui</span>";
+    toggleText.setAttribute('onclick', 'alternarTelaAuth(true)');
+  }
+}
+
+async function handleLogin() {
+  let user = document.getElementById('login-username').value.trim().toLowerCase();
+  const password = document.getElementById('login-pwd').value;
+  const errorEl = document.getElementById('login-error');
+  errorEl.style.display = 'none';
+
+  if(!user || !password) {
+    errorEl.textContent = "Preencha o usuário e a senha.";
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  const emailVirtual = `${user}@blackskull.local`;
+
+  const { error } = await _supabase.auth.signInWithPassword({ email: emailVirtual, password });
+
+  if (error) {
+    errorEl.textContent = "Acesso negado. Verifique o usuário e a senha.";
+    errorEl.style.display = 'block';
+  } else {
+    checkUser();
+  }
+}
+
+async function handleSignUp() {
+  let user = document.getElementById('login-username').value.trim().toLowerCase();
+  const password = document.getElementById('login-pwd').value;
+  const errorEl = document.getElementById('login-error');
+  errorEl.style.display = 'none';
+
+  if (!user || !password) {
+    errorEl.textContent = "Defina um nome de usuário e uma senha.";
+    errorEl.style.display = 'block';
+    return;
+  }
+  
+  if (password.length < 6) {
+    errorEl.textContent = "A senha precisa ter no mínimo 6 dígitos.";
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  const emailVirtual = `${user}@blackskull.local`;
+
+  const { error } = await _supabase.auth.signUp({ email: emailVirtual, password });
+
+  if (error) {
+    errorEl.textContent = "Erro ao cadastrar: " + error.message;
+    errorEl.style.display = 'block';
+  } else {
+    showToast("Conta criada com sucesso!");
+    checkUser();
+  }
+}
+
+async function handleLogout() {
+  await _supabase.auth.signOut();
+  DB_STOCK = {};
+  DB_MINS = {};
+  checkUser();
+}
+
+// ─── NAVEGAÇÃO ENTRE ABAS ─────────────────────────────────────────────────────
+function setTab(tab) {
+  currentTab = tab;
+  ['contar','resumo','minimos'].forEach(t => {
+    document.getElementById(`tab-${t}`).style.display = t === tab ? '' : 'none';
+  });
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', ['contar','resumo','minimos'][i] === tab);
+  });
+  const weekBar = document.getElementById('weekBar');
+  const fab = document.getElementById('fabClear');
+  if (tab === 'contar') { weekBar.style.display = 'flex'; fab.style.display = 'flex'; }
+  else { weekBar.style.display = 'none'; fab.style.display = 'none'; }
+  if (tab === 'contar') renderContar();
+  if (tab === 'resumo') renderResumo();
+  if (tab === 'minimos') renderMinimos();
+}
+
+function setWeek(w) {
+  currentWeek = w;
+  document.querySelectorAll('#weekBar .week-btn').forEach((b,i) => b.classList.toggle('active', i+1 === w));
+  renderContar();
+}
+
+// ─── ABA CONTAR ──────────────────────────────────────────────────────────────
+function renderContar() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  const list = document.getElementById('contarList');
+  let html = '';
+  CATEGORIES.forEach(cat => {
+    const items = cat.itens.filter(it => !q || it.nome.toLowerCase().includes(q) || String(it.id).includes(q));
+    if (!items.length) return;
+    html += `<div class="cat-header">${cat.nome}<span class="cat-count">${items.length}</span></div>`;
+    html += `<div class="item-list">`;
+    items.forEach(it => {
+      const qty = getQty(it.id, currentWeek);
+      const min = getMin(it.id);
+      const st = itemStatus(qty, min);
+      const cardClass = st === 'missing' ? 'critical' : st === 'low' ? 'low' : qty > 0 ? 'has-qty' : '';
+      html += `
+      <div class="item-card ${cardClass}" id="card-${it.id}">
+        <div class="item-name-wrap" onclick="increment(${it.id})">
+          <div class="item-name">${it.nome}</div>
+          <div class="item-code">#${it.id}</div>
+        </div>
+        ${min > 0 ? `<span class="min-badge">mín ${min}</span>` : ''}
+        <div class="counter-ctrl">
+          <button class="btn-adj btn-minus" onclick="openPopover(event,${it.id},'minus')">−</button>
+          <div class="qty-display ${qty === 0 ? 'zero' : ''}" id="qty-${it.id}" onclick="editQtyInline(${it.id})">${qty}</div>
+          <button class="btn-adj btn-plus" onclick="openPopover(event,${it.id},'plus')">+</button>
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  if (!html) html = `<div class="empty"><div class="empty-icon">🔍</div><div class="empty-text">Nenhum item encontrado</div></div>`;
+  list.innerHTML = html;
+}
+
+function increment(id) { openPopover(null, id, 'plus'); }
+
+// ─── POPOVER DE AJUSTE RÁPIDO ────────────────────────────────────────────────
+let _popoverId = null;
+let _popoverMode = 'plus';
+
+function openPopover(evt, id, mode) {
+  if (evt) evt.stopPropagation();
+  _popoverId = id;
+  _popoverMode = mode;
+  const pop = document.getElementById('adjPopover');
+  const title = document.getElementById('adjPopoverTitle');
+  const confirm = document.getElementById('adjPopoverConfirm');
+  const inp = document.getElementById('adjPopoverInput');
+
+  if (mode === 'plus') {
+    title.textContent = 'Adicionar';
+    title.className = 'adj-popover-title plus';
+    confirm.className = 'adj-popover-confirm plus';
+  } else {
+    title.textContent = 'Subtrair';
+    title.className = 'adj-popover-title minus';
+    confirm.className = 'adj-popover-confirm minus';
+  }
+
+  inp.value = 1;
+  pop.classList.add('show');
+
+  if (evt && evt.currentTarget) {
+    const btn = evt.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const popW = 190;
+    let left = rect.left - popW / 2 + rect.width / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - popW - 8));
+    let top = rect.bottom + 6;
+    if (top + 120 > window.innerHeight) top = rect.top - 120;
+    pop.style.left = left + 'px';
+    pop.style.top = top + 'px';
+  } else {
+    pop.style.left = '50%';
+    pop.style.top = '50%';
+    pop.style.transform = 'translate(-50%,-50%)';
+  }
+
+  setTimeout(() => inp.focus(), 50);
+}
+
+function closePopover() {
+  document.getElementById('adjPopover').classList.remove('show');
+  document.getElementById('adjPopover').style.transform = '';
+  _popoverId = null;
+}
+
+function confirmAdj() {
+  if (_popoverId === null) return;
+  const val = parseInt(document.getElementById('adjPopoverInput').value) || 0;
+  if (val <= 0) { closePopover(); return; }
+  const delta = _popoverMode === 'plus' ? val : -val;
+  applyAdjust(_popoverId, delta);
+  closePopover();
+}
+
+document.addEventListener('click', (e) => {
+  const pop = document.getElementById('adjPopover');
+  if (pop.classList.contains('show') && !pop.contains(e.target)) closePopover();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && document.getElementById('adjPopover').classList.contains('show')) confirmAdj();
+  if (e.key === 'Escape') {
+    closePopover();
+    cancelQtyEdit();
+  }
+});
+
+async function applyAdjust(id, delta) {
+  const qty = getQty(id, currentWeek);
+  const newQty = Math.max(0, qty + delta);
+  
+  await setQty(id, currentWeek, newQty);
+  
+  const qEl = document.getElementById(`qty-${id}`);
+  const cardEl = document.getElementById(`card-${id}`);
+  if (qEl && qEl.tagName === 'DIV') {
+    qEl.textContent = newQty;
+    qEl.classList.toggle('zero', newQty === 0);
+  }
+  if (cardEl) {
+    const min = getMin(id);
+    const st = itemStatus(newQty, min);
+    cardEl.className = `item-card ${st === 'missing' ? 'critical' : st === 'low' ? 'low' : newQty > 0 ? 'has-qty' : ''}`;
+  }
+}
+
+// ─── EDIÇÃO DIGITADA (INLINE) ─────────────────────────────────────────────────
+let _editingId = null;
+
+function editQtyInline(id) {
+  if (_editingId !== null) cancelQtyEdit();
+  _editingId = id;
+  const qEl = document.getElementById(`qty-${id}`);
+  if (!qEl) return;
+  const cur = getQty(id, currentWeek);
+  const inp = document.createElement('input');
+  inp.type = 'number';
+  inp.min = '0';
+  inp.value = cur;
+  inp.className = 'qty-input-edit';
+  inp.id = `qty-edit-${id}`;
+  qEl.replaceWith(inp);
+  inp.focus();
+  inp.select();
+  inp.addEventListener('blur', () => commitQtyEdit(id));
+}
+
+async function commitQtyEdit(id) {
+  const inp = document.getElementById(`qty-edit-${id}`);
+  if (!inp) return;
+  const newQty = Math.max(0, parseInt(inp.value) || 0);
+  
+  await setQty(id, currentWeek, newQty);
+  
+  const div = document.createElement('div');
+  div.className = `qty-display${newQty === 0 ? ' zero' : ''}`;
+  div.id = `qty-${id}`;
+  div.textContent = newQty;
+  div.onclick = () => editQtyInline(id);
+  inp.replaceWith(div);
+  const cardEl = document.getElementById(`card-${id}`);
+  if (cardEl) {
+    const min = getMin(id);
+    const st = itemStatus(newQty, min);
+    cardEl.className = `item-card ${st === 'missing' ? 'critical' : st === 'low' ? 'low' : newQty > 0 ? 'has-qty' : ''}`;
+  }
+  _editingId = null;
+}
+
+function cancelQtyEdit() {
+  if (_editingId === null) return;
+  commitQtyEdit(_editingId);
+}
+
+// ─── MODAL LIMPAR SEMANA ──────────────────────────────────────────────────────
+function showClearModal() {
+  const semNames = ['1ª','2ª','3ª','4ª','5ª'];
+  document.getElementById('clearModalText').textContent = `Zerar todas as contagens da ${semNames[currentWeek-1]} semana?`;
+  document.getElementById('clearModal').classList.add('show');
+}
+function hideModal() { document.getElementById('clearModal').classList.remove('show'); }
+
+async function clearWeek() {
+  if (!currentUser) return;
+  
+  const { error } = await _supabase
+    .from('estoque_bebidas')
+    .delete()
+    .eq('user_id', currentUser.id)
+    .eq('semana', currentWeek);
+
+  if (!error) {
+    DB_STOCK[currentWeek] = {};
+    hideModal();
+    renderContar();
+    showToast('Semana zerada no servidor ✓');
+  }
+}
+
+// ─── TOAST NOTIFICAÇÃO ────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ─── ABA RESUMO ───────────────────────────────────────────────────────────────
+function getResumoStock() {
+  if (resumoWeek === 'all') {
+    const merged = {};
+    for (let w = 1; w <= 5; w++) {
+      const s = DB_STOCK[w] || {};
+      Object.entries(s).forEach(([id, qty]) => { merged[id] = (merged[id]||0) + qty; });
+    }
+    return merged;
+  }
+  return DB_STOCK[resumoWeek] || {};
+}
+
+function renderResumoWeekBar() {
+  const wrap = document.getElementById('resumoWeekBar');
+  const opts = [{v:'all',l:'Todas'},{v:1,l:'1ª'},{v:2,l:'2ª'},{v:3,l:'3ª'},{v:4,l:'4ª'},{v:5,l:'5ª'}];
+  wrap.innerHTML = opts.map(o =>
+    `<button class="week-btn ${resumoWeek==o.v?'active':''}" onclick="setResumoWeek('${o.v}')">${o.l}</button>`
+  ).join('');
+}
+
+function setResumoWeek(w) {
+  resumoWeek = isNaN(w) ? w : Number(w);
+  renderResumo();
+}
+
+function renderResumo() {
+  renderResumoWeekBar();
+  const stock = getResumoStock();
+  const missing = [], low = [], ok = [], none = [];
+  CATEGORIES.forEach(cat => {
+    cat.itens.forEach(it => {
+      const qty = stock[it.id] || 0;
+      const min = getMin(it.id);
+      const st = itemStatus(qty, min);
+      const entry = {...it, qty, min, st, cat: cat.nome};
+      if (st === 'missing') missing.push(entry);
+      else if (st === 'low') low.push(entry);
+      else if (st === 'ok') ok.push(entry);
+      else none.push(entry);
+    });
+  });
+
+  document.getElementById('sc-missing').textContent = missing.length;
+  document.getElementById('sc-low').textContent = low.length;
+  document.getElementById('sc-ok').textContent = ok.length;
+
+  let html = '';
+
+  if (missing.length) {
+    html += `<div class="section-title red">🚨 Faltando (${missing.length})</div>`;
+    html += `<div class="alert-cards">`;
+    missing.forEach(it => {
+      const falta = it.min - it.qty;
+      html += `<div class="alert-card missing">
+        <div class="alert-info"><div class="alert-name">${it.nome}</div><div class="alert-detail">mín ${it.min} · falta ${falta}</div></div>
+        <div class="alert-qty">${it.qty}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (low.length) {
+    html += `<div class="section-title yellow">⚠️ Baixo (${low.length})</div>`;
+    html += `<div class="alert-cards">`;
+    low.forEach(it => {
+      html += `<div class="alert-card low">
+        <div class="alert-info"><div class="alert-name">${it.nome}</div><div class="alert-detail">mín ${it.min}</div></div>
+        <div class="alert-qty">${it.qty}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  html += `<div class="section-title full">📋 Todos os itens contados</div>`;
+  html += `<table class="full-table"><thead><tr><th>Item</th><th>Qtd</th><th>Status</th></tr></thead><tbody>`;
+  
+  CATEGORIES.forEach(cat => {
+    const catItems = [...missing, ...low, ...ok, ...none].filter(i => i.cat === cat.nome && i.qty > 0);
+    if (!catItems.length) return;
+    html += `<tr class="cat-row"><td colspan="3">${cat.nome}</td></tr>`;
+    catItems.forEach(it => {
+      const badgeClass = it.st;
+      const badgeLabel = it.st === 'missing' ? 'FALTA' : it.st === 'low' ? 'BAIXO' : it.st === 'ok' ? 'OK' : '—';
+      html += `<tr>
+        <td>${it.nome}</td>
+        <td style="font-family:'DM Mono',monospace;font-weight:500">${it.qty}</td>
+        <td><span class="status-badge ${badgeClass}">${badgeLabel}</span></td>
+      </tr>`;
+    });
+  });
+  html += `</tbody></table>`;
+
+  document.getElementById('resumoContent').innerHTML = html;
+}
+
+// ─── EXPORTAÇÃO CSV ───────────────────────────────────────────────────────────
+function exportCSV() {
+  const stock = getResumoStock();
+  const semLabel = resumoWeek === 'all' ? 'Todas as semanas' : `${resumoWeek}ª Semana`;
+  let rows = [['Código','Bebida','Categoria','Qtd','Mínimo','Status']];
+  CATEGORIES.forEach(cat => {
+    cat.itens.forEach(it => {
+      const qty = stock[it.id] || 0;
+      const min = getMin(it.id);
+      const st = itemStatus(qty, min);
+      const stLabel = st === 'missing' ? 'Faltando' : st === 'low' ? 'Baixo' : st === 'ok' ? 'OK' : 'Sem mín';
+      rows.push([it.id, it.nome, cat.nome, qty, min, stLabel]);
+    });
+  });
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `estoque-bebidas-${semLabel.replace(/\s+/g,'_')}.csv`;
+  a.click(); URL.revokeObjectURL(url);
+  showToast('CSV exportado ✓');
+}
+
+// ─── GERADOR PDF ──────────────────────────────────────────────────────────────
+function gerarPDF() {
+  const { jsPDF } = window.jspdf;
+  if (!jsPDF) { alert('Biblioteca PDF não carregada.'); return; }
+  const stock = getResumoStock();
+  const semLabel = resumoWeek === 'all' ? 'Todas as semanas' : `${resumoWeek}ª Semana`;
+  const now = new Date().toLocaleString('pt-BR');
+
+  const missing = [], low = [], allCounted = [];
+  CATEGORIES.forEach(cat => {
+    cat.itens.forEach(it => {
+      const qty = stock[it.id] || 0;
+      const min = getMin(it.id);
+      const st = itemStatus(qty, min);
+      if (st === 'missing') missing.push({...it, qty, min, cat: cat.nome});
+      if (st === 'low') low.push({...it, qty, min, cat: cat.nome});
+      if (qty > 0) allCounted.push({...it, qty, min, st, cat: cat.nome});
+    });
+  });
+
+  const doc = new jsPDF({ orientation:'p', unit:'mm', format:'a4' });
+  const pw = doc.internal.pageSize.getWidth();
+  let y = 0;
+
+  doc.setFillColor(20,20,20);
+  doc.rect(0, 0, pw, 14, 'F');
+  doc.setTextColor(232,160,32);
+  doc.setFontSize(13);
+  doc.setFont('helvetica','bold');
+  doc.text('BLACK SKULL BIER — ESTOQUE DE BEBIDAS', 8, 9);
+  doc.setFontSize(7);
+  doc.setTextColor(180,180,180);
+  doc.text(`${semLabel} · Gerado em ${now}`, pw - 8, 9, {align:'right'});
+  y = 18;
+
+  const cards = [
+    {label:'FALTANDO', count: missing.length, color:[224,85,85]},
+    {label:'BAIXO', count: low.length, color:[240,192,64]},
+    {label:'OK', count: allCounted.filter(i => i.st==='ok').length, color:[76,175,111]},
+  ];
+  const cw = (pw - 16 - 8) / 3;
+  cards.forEach((c, i) => {
+    const x = 8 + i * (cw + 4);
+    doc.setFillColor(248,248,248);
+    doc.roundedRect(x, y, cw, 12, 2, 2, 'F');
+    doc.setDrawColor(...c.color);
+    doc.setLineWidth(1);
+    doc.line(x, y+1, x, y+11);
+    doc.setLineWidth(0.2);
+    doc.setTextColor(...c.color);
+    doc.setFontSize(14);
+    doc.setFont('helvetica','bold');
+    doc.text(String(c.count), x+5, y+8);
+    doc.setFontSize(6);
+    doc.setTextColor(100,100,100);
+    doc.setFont('helvetica','normal');
+    doc.text(c.label, x+5+8, y+6);
+  });
+  y += 16;
+
+  if (missing.length) {
+    doc.setFontSize(8);
+    doc.setFont('helvetica','bold');
+    doc.setTextColor(180,30,30);
+    doc.text('🚨 FALTANDO', 8, y+4);
+    y += 6;
+    doc.autoTable({
+      startY: y,
+      head: [['Código','Bebida','Categoria','Qtd','Mínimo','Falta']],
+      body: missing.map(it => [it.id, it.nome, it.cat, it.qty, it.min, it.min - it.qty]),
+      styles: { fontSize: 7, cellPadding: 1.5, textColor: [30,30,30] },
+      headStyles: { fillColor: [255,220,220], textColor: [150,0,0], fontStyle:'bold', fontSize:6.5 },
+      alternateRowStyles: { fillColor: [255,245,245] },
+      margin: { left: 8, right: 8 },
+    });
+    y = doc.lastAutoTable.finalY + 4;
+  }
+
+  if (low.length) {
+    doc.setFontSize(8);
+    doc.setFont('helvetica','bold');
+    doc.setTextColor(160,120,0);
+    doc.text('⚠️ ESTOQUE BAIXO', 8, y+4);
+    y += 6;
+    doc.autoTable({
+      startY: y,
+      head: [['Código','Bebida','Categoria','Qtd','Mínimo']],
+      body: low.map(it => [it.id, it.nome, it.cat, it.qty, it.min]),
+      styles: { fontSize: 7, cellPadding: 1.5, textColor: [30,30,30] },
+      headStyles: { fillColor: [255,245,200], textColor: [120,90,0], fontStyle:'bold', fontSize:6.5 },
+      alternateRowStyles: { fillColor: [255,252,230] },
+      margin: { left: 8, right: 8 },
+    });
+    y = doc.lastAutoTable.finalY + 4;
+  }
+
+  doc.setFontSize(8);
+  doc.setFont('helvetica','bold');
+  doc.setTextColor(60,60,60);
+  doc.text('CONTAGEM COMPLETA', 8, y+4);
+  y += 6;
+
+  const tableBody = [];
+  CATEGORIES.forEach(cat => {
+    const catItems = allCounted.filter(i => i.cat === cat.nome);
+    if (!catItems.length) return;
+    tableBody.push([{content: cat.nome.toUpperCase(), colSpan:5, styles:{fillColor:[230,230,230], textColor:[80,80,80], fontStyle:'bold', fontSize:6}}]);
+    catItems.forEach(it => {
+      const stLabel = it.st === 'missing' ? 'FALTA' : it.st === 'low' ? 'BAIXO' : 'OK';
+      const stColor = it.st === 'missing' ? [200,50,50] : it.st === 'low' ? [160,120,0] : [50,150,80];
+      tableBody.push([it.id, it.nome, it.qty, it.min||'—', {content:stLabel, styles:{textColor:stColor, fontStyle:'bold'}}]);
+    });
+  });
+
+  doc.autoTable({
+    startY: y,
+    head: [['Cód.','Bebida','Qtd','Mín.','Status']],
+    body: tableBody,
+    styles: { fontSize: 7, cellPadding: 1.5, textColor: [30,30,30] },
+    headStyles: { fillColor: [20,20,20], textColor: [255,255,255], fontStyle:'bold', fontSize:6.5 },
+    alternateRowStyles: { fillColor: [248,248,248] },
+    margin: { left: 8, right: 8 },
+    didDrawPage: (data) => {
+      doc.setFontSize(6);
+      doc.setTextColor(160,160,160);
+      doc.text('Black Skull Bier — Controle de Estoque', 8, doc.internal.pageSize.getHeight() - 5);
+      doc.text(`Página ${data.pageNumber}`, pw - 8, doc.internal.pageSize.getHeight() - 5, {align:'right'});
+    }
+  });
+
+  doc.save(`estoque-bebidas-${semLabel.replace(/\s+/g,'_')}.pdf`);
+  showToast('PDF gerado ✓');
+}
+
+// ─── ABA MÍNIMOS ──────────────────────────────────────────────────────────────
+function renderMinimos() {
+  const q = (document.getElementById('searchMin').value || '').toLowerCase().trim();
+  let html = '';
+  CATEGORIES.forEach(cat => {
+    const items = cat.itens.filter(it => !q || it.nome.toLowerCase().includes(q) || String(it.id).includes(q));
+    if (!items.length) return;
+    html += `<div class="cat-header" style="margin:0 -10px;padding:14px 22px 6px">${cat.nome}</div>`;
+    items.forEach(it => {
+      const min = getMin(it.id);
+      html += `
+      <div class="min-item">
+        <div class="min-name">
+          <div class="min-name-text">${it.nome}</div>
+          <div class="min-code-text">#${it.id}</div>
+        </div>
+        <div class="min-ctrl">
+          <button class="btn-adj btn-minus" onclick="adjMin(${it.id},-1)">−</button>
+          <input class="min-input ${min===0?'zero':''}" id="min-${it.id}" type="number" min="0" value="${min}"
+            oninput="saveMin(${it.id},this)">
+          <button class="btn-adj btn-plus" onclick="adjMin(${it.id},1)">+</button>
+        </div>
+      </div>`;
+    });
+  });
+  document.getElementById('minimosList').innerHTML = html;
+}
+
+function saveMin(id, input) {
+  const val = parseInt(input.value) || 0;
+  setMin(id, val);
+  input.classList.toggle('zero', val === 0);
+}
+
+function adjMin(id, delta) {
+  const cur = getMin(id);
+  const nv = Math.max(0, cur + delta);
+  setMin(id, nv);
+  const inp = document.getElementById(`min-${id}`);
+  if (inp) { inp.value = nv; inp.classList.toggle('zero', nv === 0); }
+}
+
+// ─── INICIALIZAÇÃO DE SESSÃO ─────────────────────────────────────────────────
+checkUser();
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Black Skull Bier — Estoque</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style>
+:root {
+  --bg: #0f0e0d;
+  --surface: #1a1917;
+  --surface2: #222120;
+  --surface3: #2a2926;
+  --amber: #e8a020;
+  --amber-dim: rgba(232,160,32,0.15);
+  --amber-dim2: rgba(232,160,32,0.08);
+  --red: #e05555;
+  --red-dim: rgba(224,85,85,0.15);
+  --green: #4caf6f;
+  --green-dim: rgba(76,175,111,0.15);
+  --yellow: #f0c040;
+  --yellow-dim: rgba(240,192,64,0.15);
+  --text: #f0ede8;
+  --text-muted: #8a8780;
+  --border: #2e2c2a;
+  --radius: 8px;
+  --radius-sm: 5px;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+
+/* HEADER */
+header {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+}
+.header-top {
+  display: flex; align-items: center; justify-content: space-between; gap: 12px;
+  padding: 10px 16px 8px;
+}
+.logo { font-family: 'Bebas Neue', cursive; font-size: 22px; color: var(--amber); letter-spacing: 1px; line-height: 1; }
+.logo span { color: var(--text-muted); font-size: 12px; font-family: 'DM Sans', sans-serif; font-weight: 300; display: block; letter-spacing: 0; margin-top: 1px; }
+
+.btn-logout {
+  background: transparent; border: 1px solid var(--border); color: var(--text-muted);
+  font-family: 'DM Sans', sans-serif; font-size: 11px; padding: 4px 10px; border-radius: 4px;
+  cursor: pointer; transition: all 0.15s; display: none;
+}
+.btn-logout:hover { border-color: var(--red); color: var(--red); }
+
+/* TABS */
+.tab-bar {
+  display: flex; border-top: 1px solid var(--border);
+}
+.tab-btn {
+  flex: 1; padding: 9px 4px; border: none; background: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 500;
+  color: var(--text-muted); letter-spacing: 0.3px; transition: all .15s;
+  border-bottom: 2px solid transparent; position: relative;
+}
+.tab-btn.active { color: var(--amber); border-bottom-color: var(--amber); }
+.tab-btn:hover:not(.active) { color: var(--text); }
+
+/* WEEK BAR */
+.week-bar {
+  position: fixed; top: 83px; left: 0; right: 0; z-index: 90;
+  background: var(--bg); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 4px; padding: 8px 12px;
+  overflow-x: auto; scrollbar-width: none;
+}
+.week-bar::-webkit-scrollbar { display: none; }
+.week-btn {
+  flex-shrink: 0; padding: 5px 12px; border-radius: 20px; border: 1px solid var(--border);
+  background: none; cursor: pointer; font-family: 'DM Mono', monospace; font-size: 11px;
+  color: var(--text-muted); transition: all .15s; white-space: nowrap;
+}
+.week-btn.active { background: var(--amber); border-color: var(--amber); color: #000; font-weight: 500; }
+.week-btn:hover:not(.active) { border-color: var(--amber); color: var(--amber); }
+
+/* MAIN CONTENT */
+.main { padding-top: 130px; min-height: 100vh; }
+.main.no-weekbar { padding-top: 90px; }
+
+/* SEARCH */
+.search-wrap { padding: 10px 12px 6px; }
+.search-input {
+  width: 100%; padding: 9px 14px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 14px;
+  outline: none; transition: border-color .15s;
+}
+.search-input:focus { border-color: var(--amber); }
+.search-input::placeholder { color: var(--text-muted); }
+
+/* CATEGORY HEADER */
+.cat-header {
+  padding: 14px 12px 6px; font-family: 'Bebas Neue', cursive;
+  font-size: 17px; color: var(--amber); letter-spacing: 1px;
+  display: flex; align-items: center; gap: 8px;
+}
+.cat-header::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+.cat-count { font-family: 'DM Mono', monospace; font-size: 11px; color: var(--text-muted); font-weight: 400; }
+
+/* ITEM CARD */
+.item-list { padding: 0 10px; display: flex; flex-direction: column; gap: 6px; }
+.item-card {
+  background: var(--surface); border: 1px solid var(--border); border-left: 3px solid transparent;
+  border-radius: var(--radius); padding: 10px 12px;
+  display: flex; align-items: center; gap: 10px; transition: border-color .15s;
+  user-select: none;
+}
+.item-card.has-qty { border-left-color: var(--amber); }
+.item-card.low { border-left-color: var(--yellow); }
+.item-card.critical { border-left-color: var(--red); }
+
+.item-name-wrap { flex: 1; min-width: 0; cursor: pointer; }
+.item-name {
+  font-size: 13px; font-weight: 500; color: var(--text); line-height: 1.3;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.item-code { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); }
+.min-badge {
+  font-family: 'DM Mono', monospace; font-size: 9px; color: var(--text-muted);
+  background: var(--surface3); border: 1px solid var(--border);
+  padding: 1px 5px; border-radius: 3px; flex-shrink: 0;
+}
+
+.counter-ctrl { display: flex; align-items: center; gap: 6px; }
+.btn-adj {
+  width: 30px; height: 30px; border-radius: 6px; border: none; cursor: pointer;
+  font-size: 16px; font-weight: 600; display: flex; align-items: center; justify-content: center;
+  transition: opacity .1s; flex-shrink: 0;
+}
+.btn-minus { background: var(--red-dim); color: var(--red); }
+.btn-plus { background: var(--green-dim); color: var(--green); }
+.btn-adj:active { opacity: 0.6; }
+.qty-display {
+  font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 500;
+  color: var(--text); min-width: 36px; text-align: center; line-height: 1;
+}
+.qty-display.zero { color: var(--text-muted); }
+
+/* FAB */
+.fab {
+  position: fixed; bottom: 24px; right: 16px; z-index: 200;
+  background: var(--surface2); border: 1px solid var(--border);
+  color: var(--red); border-radius: 24px; padding: 10px 16px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+  cursor: pointer; box-shadow: 0 4px 20px rgba(0,0,0,.5); display: flex; align-items: center; gap: 6px;
+  transition: all .15s;
+}
+.fab:hover { border-color: var(--red); }
+
+/* RESUMO */
+.resumo-wrap { padding: 10px 12px; }
+.week-select-wrap { margin-bottom: 12px; display: flex; gap: 6px; overflow-x: auto; scrollbar-width: none; padding-bottom: 2px; }
+.week-select-wrap::-webkit-scrollbar { display: none; }
+.week-select-wrap .week-btn { padding: 5px 10px; }
+
+.status-cards { display: grid; grid-template-columns: repeat(3,1fr); gap: 8px; margin-bottom: 14px; }
+.status-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 12px; text-align: center;
+}
+.status-card .sc-num { font-family: 'Bebas Neue', cursive; font-size: 32px; line-height: 1; }
+.status-card .sc-label { font-size: 10px; color: var(--text-muted); font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; margin-top: 2px; }
+.status-card.missing .sc-num { color: var(--red); }
+.status-card.low .sc-num { color: var(--yellow); }
+.status-card.ok .sc-num { color: var(--green); }
+
+.action-btns { display: flex; gap: 8px; margin-bottom: 14px; }
+.action-btn {
+  flex: 1; padding: 9px; background: var(--surface); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--text); font-family: 'DM Sans', sans-serif;
+  font-size: 12px; font-weight: 500; cursor: pointer; transition: all .15s;
+  display: flex; align-items: center; justify-content: center; gap: 5px;
+}
+.action-btn:hover { border-color: var(--amber); color: var(--amber); }
+
+.section-title {
+  font-family: 'Bebas Neue', cursive; font-size: 16px; letter-spacing: 0.5px;
+  margin-bottom: 8px; display: flex; align-items: center; gap: 6px;
+}
+.section-title.red { color: var(--red); }
+.section-title.yellow { color: var(--yellow); }
+.section-title.full { color: var(--text-muted); }
+
+.alert-cards { display: flex; flex-direction: column; gap: 5px; margin-bottom: 14px; }
+.alert-card {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-sm);
+  padding: 8px 10px; display: flex; align-items: center; gap: 8px;
+}
+.alert-card.missing { border-left: 3px solid var(--red); }
+.alert-card.low { border-left: 3px solid var(--yellow); }
+.alert-info { flex: 1; min-width: 0; }
+.alert-name { font-size: 12px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.alert-detail { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); margin-top: 2px; }
+.alert-qty { font-family: 'DM Mono', monospace; font-size: 16px; font-weight: 500; }
+.alert-card.missing .alert-qty { color: var(--red); }
+.alert-card.low .alert-qty { color: var(--yellow); }
+
+/* TABELA COMPLETA */
+.full-table { width: 100%; border-collapse: collapse; font-size: 12px; margin-bottom: 80px; }
+.full-table th { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); text-align: left; padding: 6px 8px; border-bottom: 1px solid var(--border); font-weight: 400; text-transform: uppercase; letter-spacing: 0.3px; }
+.full-table td { padding: 7px 8px; border-bottom: 1px solid rgba(255,255,255,.04); }
+.full-table tr.cat-row td { background: var(--surface2); font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; padding: 5px 8px; }
+.full-table tr:hover td { background: var(--surface2); }
+.status-badge {
+  font-family: 'DM Mono', monospace; font-size: 9px; padding: 2px 6px; border-radius: 3px;
+  font-weight: 500; text-transform: uppercase;
+}
+.status-badge.missing { background: var(--red-dim); color: var(--red); }
+.status-badge.low { background: var(--yellow-dim); color: var(--yellow); }
+.status-badge.ok { background: var(--green-dim); color: var(--green); }
+.status-badge.none { color: var(--text-muted); background: var(--surface3); }
+
+/* MINIMOS */
+.min-list { padding: 0 10px 80px; display: flex; flex-direction: column; gap: 6px; }
+.min-item {
+  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 8px 12px; display: flex; align-items: center; gap: 8px;
+}
+.min-name { flex: 1; min-width: 0; }
+.min-name-text { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.min-code-text { font-family: 'DM Mono', monospace; font-size: 10px; color: var(--text-muted); }
+.min-ctrl { display: flex; align-items: center; gap: 5px; }
+.min-input {
+  width: 48px; text-align: center; background: var(--surface3); border: 1px solid var(--border);
+  border-radius: 4px; color: var(--text); font-family: 'DM Mono', monospace; font-size: 16px;
+  font-weight: 500; padding: 4px; outline: none; appearance: textfield;
+}
+.min-input::-webkit-outer-spin-button, .min-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.min-input:focus { border-color: var(--amber); }
+.min-input.zero { color: var(--text-muted); }
+
+/* MODAL CONFIRM */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 1000;
+  display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.show { display: flex; }
+.modal {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+  padding: 20px; max-width: 320px; width: 100%;
+}
+.modal-title { font-family: 'Bebas Neue', cursive; font-size: 20px; color: var(--red); margin-bottom: 8px; }
+.modal-text { font-size: 13px; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5; }
+.modal-btns { display: flex; gap: 8px; }
+.modal-btn {
+  flex: 1; padding: 10px; border-radius: var(--radius-sm); border: 1px solid var(--border);
+  cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500;
+}
+.modal-btn.cancel { background: none; color: var(--text-muted); }
+.modal-btn.confirm { background: var(--red); border-color: var(--red); color: #fff; }
+
+/* EMPTY STATE */
+.empty { text-align: center; padding: 40px 20px; color: var(--text-muted); }
+.empty-icon { font-size: 32px; margin-bottom: 8px; }
+.empty-text { font-size: 13px; }
+
+/* POPOVER AJUSTE */
+.adj-popover {
+  position: fixed; z-index: 900;
+  background: var(--surface2); border: 1px solid var(--border);
+  border-radius: 10px; padding: 12px 14px;
+  box-shadow: 0 8px 32px rgba(0,0,0,.6);
+  display: none; flex-direction: column; gap: 8px;
+  min-width: 180px;
+}
+.adj-popover.show { display: flex; }
+.adj-popover-title {
+  font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.5px; color: var(--text-muted);
+}
+.adj-popover-title.plus { color: var(--green); }
+.adj-popover-title.minus { color: var(--red); }
+.adj-popover-row { display: flex; gap: 6px; align-items: center; }
+.adj-popover-input {
+  flex: 1; padding: 7px 10px; background: var(--surface3);
+  border: 1px solid var(--border); border-radius: 6px;
+  color: var(--text); font-family: 'DM Mono', monospace;
+  font-size: 18px; font-weight: 500; text-align: center;
+  outline: none; width: 80px;
+  -webkit-appearance: none; -moz-appearance: textfield; appearance: textfield;
+}
+.adj-popover-input::-webkit-outer-spin-button,
+.adj-popover-input::-webkit-inner-spin-button { -webkit-appearance: none; }
+.adj-popover-input:focus { border-color: var(--amber); }
+.adj-popover-confirm {
+  padding: 7px 14px; border: none; border-radius: 6px;
+  font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 600;
+  cursor: pointer; transition: opacity .15s;
+}
+.adj-popover-confirm.plus { background: var(--green); color: #fff; }
+.adj-popover-confirm.minus { background: var(--red); color: #fff; }
+.adj-popover-confirm:active { opacity: 0.7; }
+.adj-popover-cancel {
+  background: none; border: none; color: var(--text-muted);
+  font-size: 11px; font-family: 'DM Sans', sans-serif;
+  cursor: pointer; text-align: center; padding: 2px 0;
+}
+.adj-popover-cancel:hover { color: var(--text); }
+
+/* QTY EDITÁVEL */
+.qty-display { cursor: pointer; }
+.qty-display:hover { color: var(--amber) !important; }
+.qty-input-edit {
+  font-family: 'DM Mono', monospace; font-size: 18px; font-weight: 500;
+  color: var(--amber); min-width: 36px; width: 48px; text-align: center;
+  background: var(--surface3); border: 1px solid var(--amber);
+  border-radius: 4px; outline: none; padding: 2px 4px;
+  -webkit-appearance: none; -moz-appearance: textfield; appearance: textfield;
+}
+.qty-input-edit::-webkit-outer-spin-button,
+.qty-input-edit::-webkit-inner-spin-button { -webkit-appearance: none; }
+
+/* TOAST */
+.toast {
+  position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%) translateY(20px);
+  background: var(--surface3); border: 1px solid var(--border); color: var(--text);
+  padding: 8px 16px; border-radius: 20px; font-size: 13px; z-index: 500;
+  opacity: 0; transition: all .3s; pointer-events: none; white-space: nowrap;
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+@media (max-width: 400px) {
+  .status-cards { grid-template-columns: repeat(3,1fr); }
+  .status-card .sc-num { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+
+<!-- TELA DE LOGIN -->
+<div id="login-screen" style="position:fixed; inset:0; background:#0f0e0d; z-index:9999; display:flex; align-items:center; justify-content:center; padding:20px;">
+  <div style="background:#1a1917; border:1px solid #2e2c2a; padding:30px; border-radius:8px; width:100%; max-width:340px; text-align:center;">
+    <h2 id="auth-title" style="font-family:'Bebas Neue', cursive; color:#e8a020; font-size:28px; margin-bottom:20px;">Black Skull Bier <br><span style="font-size:16px; color:#8a8780;">Acesso Restrito</span></h2>
+    <input type="text" id="login-username" placeholder="Nome de Usuário" style="width:100%; padding:10px; margin-bottom:10px; background:#222120; border:1px solid #2e2c2a; color:#fff; border-radius:5px; outline:none; text-transform: lowercase;">
+    <input type="password" id="login-pwd" placeholder="Senha" style="width:100%; padding:10px; margin-bottom:20px; background:#222120; border:1px solid #2e2c2a; color:#fff; border-radius:5px; outline:none;">
+    <button id="btn-login" onclick="handleLogin()" style="width:100%; padding:12px; background:#e8a020; border:none; color:#000; font-weight:bold; border-radius:5px; cursor:pointer; display:block;">Entrar</button>
+    <button id="btn-signup" onclick="handleSignUp()" style="width:100%; padding:12px; background:#4caf6f; border:none; color:#fff; font-weight:bold; border-radius:5px; cursor:pointer; display:none;">Criar Conta</button>
+    <p id="toggle-auth-text" style="font-size:12px; color:#8a8780; margin-top:15px; cursor:pointer;" onclick="alternarTelaAuth(true)">
+      Não tem uma conta? <span style="color:#e8a020; text-decoration:underline;">Cadastre-se aqui</span>
+    </p>
+    <p id="login-error" style="color:#e05555; font-size:12px; margin-top:10px; display:none;"></p>
+  </div>
+</div>
+
+<header>
+  <div class="header-top">
+    <div class="logo">Black Skull Bier<span>Controle de Estoque</span></div>
+    <button class="btn-logout" id="btnLogout" onclick="handleLogout()">Sair 🚪</button>
+  </div>
+  <div class="tab-bar">
+    <button class="tab-btn active" onclick="setTab('contar')">📦 Contar</button>
+    <button class="tab-btn" onclick="setTab('resumo')">📊 Resumo</button>
+    <button class="tab-btn" onclick="setTab('minimos')">⚙️ Mínimos</button>
+  </div>
+</header>
+
+<div class="week-bar" id="weekBar">
+  <button class="week-btn active" onclick="setWeek(1)">1ª Sem</button>
+  <button class="week-btn" onclick="setWeek(2)">2ª Sem</button>
+  <button class="week-btn" onclick="setWeek(3)">3ª Sem</button>
+  <button class="week-btn" onclick="setWeek(4)">4ª Sem</button>
+  <button class="week-btn" onclick="setWeek(5)">5ª Sem</button>
+</div>
+
+<!-- ABA CONTAR -->
+<div class="main" id="tab-contar">
+  <div class="search-wrap">
+    <input class="search-input" id="searchInput" type="search" placeholder="🔍 Buscar bebida…" oninput="renderContar()">
+  </div>
+  <div id="contarList"></div>
+  <div style="height:80px"></div>
+</div>
+
+<!-- ABA RESUMO -->
+<div class="main no-weekbar" id="tab-resumo" style="display:none">
+  <div class="resumo-wrap">
+    <div class="week-select-wrap" id="resumoWeekBar"></div>
+    <div class="action-btns">
+      <button class="action-btn" onclick="exportCSV()">⬇ CSV</button>
+      <button class="action-btn" onclick="gerarPDF()">📄 PDF</button>
+    </div>
+    <div class="status-cards">
+      <div class="status-card missing"><div class="sc-num" id="sc-missing">0</div><div class="sc-label">Faltando</div></div>
+      <div class="status-card low"><div class="sc-num" id="sc-low">0</div><div class="sc-label">Baixo</div></div>
+      <div class="status-card ok"><div class="sc-num" id="sc-ok">0</div><div class="sc-label">OK</div></div>
+    </div>
+    <div id="resumoContent"></div>
+  </div>
+</div>
+
+<!-- ABA MINIMOS -->
+<div class="main no-weekbar" id="tab-minimos" style="display:none">
+  <div style="padding:10px 12px 6px">
+    <input class="search-input" id="searchMin" type="search" placeholder="🔍 Buscar bebida…" oninput="renderMinimos()">
+  </div>
+  <div class="min-list" id="minimosList"></div>
+</div>
+
+<button class="fab" id="fabClear" onclick="showClearModal()">🗑 Limpar semana</button>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="clearModal">
+  <div class="modal">
+    <div class="modal-title">Limpar Semana</div>
+    <div class="modal-text" id="clearModalText">Zerar todas as contagens da semana atual?</div>
+    <div class="modal-btns">
+      <button class="modal-btn cancel" onclick="hideModal()">Cancelar</button>
+      <button class="modal-btn confirm" onclick="clearWeek()">Zerar</button>
+    </div>
+  </div>
+</div>
+
+<div class="adj-popover" id="adjPopover">
+  <div class="adj-popover-title" id="adjPopoverTitle">Adicionar</div>
+  <div class="adj-popover-row">
+    <input class="adj-popover-input" id="adjPopoverInput" type="number" min="1" value="1">
+    <button class="adj-popover-confirm" id="adjPopoverConfirm" onclick="confirmAdj()">OK</button>
+  </div>
+  <button class="adj-popover-cancel" onclick="closePopover()">cancelar</button>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ─── CONFIGURAÇÃO DO SUPABASE CONFIGURADA ────────────────────────────────────
+const SUPABASE_URL = "https://lsbqqbjzrdobfwfakgvu.supabase.co";
+const SUPABASE_ANON_KEY = "sb_publishable_VkD6dhm2zgqtX3PaaynaAA_tNZToGLg";
+
+const _supabase = supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+let currentUser = null;
+
+// ─── DADOS DAS CATEGORIAS ────────────────────────────────────────────────────
+const CATEGORIES = [
+  {
+    nome: "Coca-Cola & Pepsi",
+    itens: [
+      {id:23, nome:"Coca-Cola"},
+      {id:24, nome:"Coca-Cola Zero"},
+      {id:1721, nome:"Coca-Cola 2 Litros"},
+      {id:3141, nome:"Coca-Cola Zero 2L"},
+      {id:29, nome:"Pepsi"},
+      {id:30, nome:"Pepsi Black"},
+    ]
+  },
+  {
+    nome: "Fanta & Sprite",
+    itens: [
+      {id:25, nome:"Fanta Laranja"},
+      {id:26, nome:"Fanta Uva"},
+      {id:3259, nome:"Fanta Laranja Zero"},
+      {id:28, nome:"Sprite"},
+      {id:3260, nome:"Sprite Zero"},
+    ]
+  },
+  {
+    nome: "Guaraná",
+    itens: [
+      {id:32, nome:"Guaraná"},
+      {id:33, nome:"Guaraná Zero"},
+      {id:34, nome:"Guaraná 2 Litros"},
+      {id:56, nome:"Guaraná Açaí"},
+      {id:57, nome:"Guaraná Power"},
+    ]
+  },
+  {
+    nome: "Schweppes & Tônica",
+    itens: [
+      {id:27, nome:"Schweppes"},
+      {id:3942, nome:"Schweppes Tônica"},
+      {id:35, nome:"Fys Tônica"},
+      {id:37, nome:"Fys Limão Siciliano"},
+      {id:3945, nome:"Tônica Antarctica"},
+    ]
+  },
+  {
+    nome: "Sucos & Del Valle",
+    itens: [
+      {id:44, nome:"Del Valle Uva"},
+      {id:45, nome:"Del Valle Pêssego"},
+      {id:46, nome:"Del Valle Maracujá"},
+      {id:3360, nome:"Suco Laranja Mitz"},
+      {id:33601, nome:"Suco Uva Mitz"},
+      {id:2058, nome:"Matte Leão"},
+      {id:2059, nome:"Matte Leão Limão"},
+    ]
+  },
+  {
+    nome: "Água & H2O",
+    itens: [
+      {id:63, nome:"H2O"},
+      {id:64, nome:"H2O Limoneto"},
+      {id:59, nome:"Água de Coco"},
+    ]
+  },
+  {
+    nome: "Isotônicos — Gatorade",
+    itens: [
+      {id:1649, nome:"Gatorade Uva"},
+      {id:1650, nome:"Gatorade Laranja"},
+      {id:1651, nome:"Gatorade Tangerina"},
+      {id:1652, nome:"Gatorade Limão"},
+      {id:3719, nome:"Gatorade Blueberry"},
+      {id:3859, nome:"Gatorade Morango"},
+    ]
+  },
+  {
+    nome: "Isotônicos — Powerade",
+    itens: [
+      {id:3887, nome:"Powerade Mix Frutas"},
+      {id:3894, nome:"Powerade Uva"},
+      {id:3925, nome:"Powerade Laranja"},
+      {id:3926, nome:"Powerade Limão"},
+      {id:3927, nome:"Powerade Frutas Tropicais"},
+      {id:3932, nome:"Powerade Tangerina"},
+      {id:3934, nome:"Powerade Mint Blast"},
+    ]
+  },
+  {
+    nome: "Energéticos",
+    itens: [
+      {id:71, nome:"Monster"},
+      {id:3933, nome:"Monster Zero"},
+    ]
+  },
+  {
+    nome: "Legger",
+    itens: [
+      {id:3189, nome:"Legger Citrus"},
+      {id:3404, nome:"Legger Açaí"},
+      {id:3405, nome:"Legger Limão"},
+      {id:3406, nome:"Legger Guaraná"},
+    ]
+  },
+  {
+    nome: "Cini",
+    itens: [
+      {id:3533, nome:"Cini Framboesa 2L"},
+      {id:3534, nome:"Cini Laranjinha 2L"},
+      {id:3911, nome:"Cini Guaraná 2L"},
+      {id:2540, nome:"Cini Framboesa 500ml"},
+      {id:3541, nome:"Cini Abacaxi 500ml"},
+      {id:3542, nome:"Cini Gengibirra 500ml"},
+      {id:3543, nome:"Cini Matte Pêssego"},
+      {id:3544, nome:"Cini Matte Limão"},
+      {id:3936, nome:"Cini Framboesa Lata"},
+    ]
+  },
+  {
+    nome: "Gasosas & Outros",
+    itens: [
+      {id:38, nome:"Itubaina"},
+      {id:58, nome:"Chocomilk"},
+      {id:3538, nome:"Gasosa Framboesa 600ml"},
+      {id:3539, nome:"Gasosa Abacaxi 600ml"},
+    ]
+  },
+];
+
+// ─── STATE LOCAL ─────────────────────────────────────────────────────────────
+let currentTab = 'contar';
+let currentWeek = 1;
+let resumoWeek = 'all';
+
+let DB_STOCK = {};
+let DB_MINS = {};
+
+// ─── CONEXÃO COM SUPABASE ────────────────────────────────────────────────────
+async function checkUser() {
+  const { data: { session } } = await _supabase.auth.getSession();
+  if (session && session.user) {
+    currentUser = session.user;
+    document.getElementById('login-screen').style.display = 'none';
+    document.getElementById('btnLogout').style.display = 'block';
+    await fetchAllData();
+    setTab('contar');
+  } else {
+    currentUser = null;
+    document.getElementById('login-screen').style.display = 'flex';
+    document.getElementById('btnLogout').style.display = 'none';
+  }
+}
+
+async function fetchAllData() {
+  if (!currentUser) return;
+  
+  const { data: stockData } = await _supabase
+    .from('estoque_bebidas')
+    .select('semana, item_id, quantidade');
+    
+  const { data: minData } = await _supabase
+    .from('minimos_bebidas')
+    .select('item_id, minimo_id');
+
+  DB_STOCK = {1:{}, 2:{}, 3:{}, 4:{}, 5:{}};
+  if (stockData) {
+    stockData.forEach(row => {
+      if(DB_STOCK[row.semana]) DB_STOCK[row.semana][row.item_id] = row.quantidade;
+    });
+  }
+
+  DB_MINS = {};
+  if (minData) {
+    minData.forEach(row => {
+      DB_MINS[row.item_id] = row.minimo_id;
+    });
+  }
+}
+
+function getQty(id, week) { return (DB_STOCK[week] && DB_STOCK[week][id]) || 0; }
+
+async function setQty(id, week, val) {
+  const finalVal = Math.max(0, val);
+  if (!DB_STOCK[week]) DB_STOCK[week] = {};
+  DB_STOCK[week][id] = finalVal;
+
+  await _supabase
+    .from('estoque_bebidas')
+    .upsert({ 
+      user_id: currentUser.id, 
+      semana: week, 
+      item_id: id, 
+      quantidade: finalVal 
+    }, { onConflict: 'user_id,semana,item_id' });
+}
+
+function getMin(id) { return DB_MINS[id] || 0; }
+
+async function setMin(id, val) {
+  const finalVal = Math.max(0, val);
+  DB_MINS[id] = finalVal;
+
+  await _supabase
+    .from('minimos_bebidas')
+    .upsert({ 
+      user_id: currentUser.id, 
+      item_id: id, 
+      minimo_id: finalVal 
+    }, { onConflict: 'user_id,item_id' });
+}
+
+function itemStatus(qty, min) {
+  if (min === 0) return qty > 0 ? 'ok' : 'none';
+  if (qty < min) return 'missing';
+  if (qty < min * 1.5) return 'low';
+  return 'ok';
+}
+
+// ─── LÓGICA DE AUTENTICAÇÃO ──────────────────────────────────────────────────
+function alternarTelaAuth(querCadastrar) {
+  const title = document.getElementById('auth-title');
+  const btnLogin = document.getElementById('btn-login');
+  const btnSignUp = document.getElementById('btn-signup');
+  const toggleText = document.getElementById('toggle-auth-text');
+  const errorEl = document.getElementById('login-error');
+  
+  errorEl.style.display = 'none';
+
+  if (querCadastrar) {
+    title.innerHTML = "Black Skull Bier <br><span style='font-size:16px; color:#8a8780;'>Nova Conta</span>";
+    btnLogin.style.display = 'none';
+    btnSignUp.style.display = 'block';
+    toggleText.innerHTML = "Já tem uma conta? <span style='color:#e8a020; text-decoration:underline;'>Faça login</span>";
+    toggleText.setAttribute('onclick', 'alternarTelaAuth(false)');
+  } else {
+    title.innerHTML = "Black Skull Bier <br><span style='font-size:16px; color:#8a8780;'>Acesso Restrito</span>";
+    btnLogin.style.display = 'block';
+    btnSignUp.style.display = 'none';
+    toggleText.innerHTML = "Não tem uma conta? <span style='color:#e8a020; text-decoration:underline;'>Cadastre-se aqui</span>";
+    toggleText.setAttribute('onclick', 'alternarTelaAuth(true)');
+  }
+}
+
+async function handleLogin() {
+  let user = document.getElementById('login-username').value.trim().toLowerCase();
+  const password = document.getElementById('login-pwd').value;
+  const errorEl = document.getElementById('login-error');
+  errorEl.style.display = 'none';
+
+  if(!user || !password) {
+    errorEl.textContent = "Preencha o usuário e a senha.";
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  const emailVirtual = `${user}@blackskull.local`;
+
+  const { error } = await _supabase.auth.signInWithPassword({ email: emailVirtual, password });
+
+  if (error) {
+    errorEl.textContent = "Acesso negado. Verifique o usuário e a senha.";
+    errorEl.style.display = 'block';
+  } else {
+    checkUser();
+  }
+}
+
+async function handleSignUp() {
+  let user = document.getElementById('login-username').value.trim().toLowerCase();
+  const password = document.getElementById('login-pwd').value;
+  const errorEl = document.getElementById('login-error');
+  errorEl.style.display = 'none';
+
+  if (!user || !password) {
+    errorEl.textContent = "Defina um nome de usuário e uma senha.";
+    errorEl.style.display = 'block';
+    return;
+  }
+  
+  if (password.length < 6) {
+    errorEl.textContent = "A senha precisa ter no mínimo 6 dígitos.";
+    errorEl.style.display = 'block';
+    return;
+  }
+
+  const emailVirtual = `${user}@blackskull.local`;
+
+  const { error } = await _supabase.auth.signUp({ email: emailVirtual, password });
+
+  if (error) {
+    errorEl.textContent = "Erro ao cadastrar: " + error.message;
+    errorEl.style.display = 'block';
+  } else {
+    showToast("Conta criada com sucesso!");
+    checkUser();
+  }
+}
+
+async function handleLogout() {
+  await _supabase.auth.signOut();
+  DB_STOCK = {};
+  DB_MINS = {};
+  checkUser();
+}
+
+// ─── NAVEGAÇÃO ENTRE ABAS ─────────────────────────────────────────────────────
+function setTab(tab) {
+  currentTab = tab;
+  ['contar','resumo','minimos'].forEach(t => {
+    document.getElementById(`tab-${t}`).style.display = t === tab ? '' : 'none';
+  });
+  document.querySelectorAll('.tab-btn').forEach((b,i) => {
+    b.classList.toggle('active', ['contar','resumo','minimos'][i] === tab);
+  });
+  const weekBar = document.getElementById('weekBar');
+  const fab = document.getElementById('fabClear');
+  if (tab === 'contar') { weekBar.style.display = 'flex'; fab.style.display = 'flex'; }
+  else { weekBar.style.display = 'none'; fab.style.display = 'none'; }
+  if (tab === 'contar') renderContar();
+  if (tab === 'resumo') renderResumo();
+  if (tab === 'minimos') renderMinimos();
+}
+
+function setWeek(w) {
+  currentWeek = w;
+  document.querySelectorAll('#weekBar .week-btn').forEach((b,i) => b.classList.toggle('active', i+1 === w));
+  renderContar();
+}
+
+// ─── ABA CONTAR ──────────────────────────────────────────────────────────────
+function renderContar() {
+  const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+  const list = document.getElementById('contarList');
+  let html = '';
+  CATEGORIES.forEach(cat => {
+    const items = cat.itens.filter(it => !q || it.nome.toLowerCase().includes(q) || String(it.id).includes(q));
+    if (!items.length) return;
+    html += `<div class="cat-header">${cat.nome}<span class="cat-count">${items.length}</span></div>`;
+    html += `<div class="item-list">`;
+    items.forEach(it => {
+      const qty = getQty(it.id, currentWeek);
+      const min = getMin(it.id);
+      const st = itemStatus(qty, min);
+      const cardClass = st === 'missing' ? 'critical' : st === 'low' ? 'low' : qty > 0 ? 'has-qty' : '';
+      html += `
+      <div class="item-card ${cardClass}" id="card-${it.id}">
+        <div class="item-name-wrap" onclick="increment(${it.id})">
+          <div class="item-name">${it.nome}</div>
+          <div class="item-code">#${it.id}</div>
+        </div>
+        ${min > 0 ? `<span class="min-badge">mín ${min}</span>` : ''}
+        <div class="counter-ctrl">
+          <button class="btn-adj btn-minus" onclick="openPopover(event,${it.id},'minus')">−</button>
+          <div class="qty-display ${qty === 0 ? 'zero' : ''}" id="qty-${it.id}" onclick="editQtyInline(${it.id})">${qty}</div>
+          <button class="btn-adj btn-plus" onclick="openPopover(event,${it.id},'plus')">+</button>
+        </div>
+      </div>`;
+    });
+    html += `</div>`;
+  });
+  if (!html) html = `<div class="empty"><div class="empty-icon">🔍</div><div class="empty-text">Nenhum item encontrado</div></div>`;
+  list.innerHTML = html;
+}
+
+function increment(id) { openPopover(null, id, 'plus'); }
+
+// ─── POPOVER DE AJUSTE RÁPIDO ────────────────────────────────────────────────
+let _popoverId = null;
+let _popoverMode = 'plus';
+
+function openPopover(evt, id, mode) {
+  if (evt) evt.stopPropagation();
+  _popoverId = id;
+  _popoverMode = mode;
+  const pop = document.getElementById('adjPopover');
+  const title = document.getElementById('adjPopoverTitle');
+  const confirm = document.getElementById('adjPopoverConfirm');
+  const inp = document.getElementById('adjPopoverInput');
+
+  if (mode === 'plus') {
+    title.textContent = 'Adicionar';
+    title.className = 'adj-popover-title plus';
+    confirm.className = 'adj-popover-confirm plus';
+  } else {
+    title.textContent = 'Subtrair';
+    title.className = 'adj-popover-title minus';
+    confirm.className = 'adj-popover-confirm minus';
+  }
+
+  inp.value = 1;
+  pop.classList.add('show');
+
+  if (evt && evt.currentTarget) {
+    const btn = evt.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const popW = 190;
+    let left = rect.left - popW / 2 + rect.width / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - popW - 8));
+    let top = rect.bottom + 6;
+    if (top + 120 > window.innerHeight) top = rect.top - 120;
+    pop.style.left = left + 'px';
+    pop.style.top = top + 'px';
+  } else {
+    pop.style.left = '50%';
+    pop.style.top = '50%';
+    pop.style.transform = 'translate(-50%,-50%)';
+  }
+
+  setTimeout(() => inp.focus(), 50);
+}
+
+function closePopover() {
+  document.getElementById('adjPopover').classList.remove('show');
+  document.getElementById('adjPopover').style.transform = '';
+  _popoverId = null;
+}
+
+function confirmAdj() {
+  if (_popoverId === null) return;
+  const val = parseInt(document.getElementById('adjPopoverInput').value) || 0;
+  if (val <= 0) { closePopover(); return; }
+  const delta = _popoverMode === 'plus' ? val : -val;
+  applyAdjust(_popoverId, delta);
+  closePopover();
+}
+
+document.addEventListener('click', (e) => {
+  const pop = document.getElementById('adjPopover');
+  if (pop.classList.contains('show') && !pop.contains(e.target)) closePopover();
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' && document.getElementById('adjPopover').classList.contains('show')) confirmAdj();
+  if (e.key === 'Escape') {
+    closePopover();
+    cancelQtyEdit();
+  }
+});
+
+async function applyAdjust(id, delta) {
+  const qty = getQty(id, currentWeek);
+  const newQty = Math.max(0, qty + delta);
+  
+  await setQty(id, currentWeek, newQty);
+  
+  const qEl = document.getElementById(`qty-${id}`);
+  const cardEl = document.getElementById(`card-${id}`);
+  if (qEl && qEl.tagName === 'DIV') {
+    qEl.textContent = newQty;
+    qEl.classList.toggle('zero', newQty === 0);
+  }
+  if (cardEl) {
+    const min = getMin(id);
+    const st = itemStatus(newQty, min);
+    cardEl.className = `item-card ${st === 'missing' ? 'critical' : st === 'low' ? 'low' : newQty > 0 ? 'has-qty' : ''}`;
+  }
+}
+
+// ─── EDIÇÃO DIGITADA (INLINE) ─────────────────────────────────────────────────
+let _editingId = null;
+
+function editQtyInline(id) {
+  if (_editingId !== null) cancelQtyEdit();
+  _editingId = id;
+  const qEl = document.getElementById(`qty-${id}`);
+  if (!qEl) return;
+  const cur = getQty(id, currentWeek);
+  const inp = document.createElement('input');
+  inp.type = 'number';
+  inp.min = '0';
+  inp.value = cur;
+  inp.className = 'qty-input-edit';
+  inp.id = `qty-edit-${id}`;
+  qEl.replaceWith(inp);
+  inp.focus();
+  inp.select();
+  inp.addEventListener('blur', () => commitQtyEdit(id));
+}
+
+async function commitQtyEdit(id) {
+  const inp = document.getElementById(`qty-edit-${id}`);
+  if (!inp) return;
+  const newQty = Math.max(0, parseInt(inp.value) || 0);
+  
+  await setQty(id, currentWeek, newQty);
+  
+  const div = document.createElement('div');
+  div.className = `qty-display${newQty === 0 ? ' zero' : ''}`;
+  div.id = `qty-${id}`;
+  div.textContent = newQty;
+  div.onclick = () => editQtyInline(id);
+  inp.replaceWith(div);
+  const cardEl = document.getElementById(`card-${id}`);
+  if (cardEl) {
+    const min = getMin(id);
+    const st = itemStatus(newQty, min);
+    cardEl.className = `item-card ${st === 'missing' ? 'critical' : st === 'low' ? 'low' : newQty > 0 ? 'has-qty' : ''}`;
+  }
+  _editingId = null;
+}
+
+function cancelQtyEdit() {
+  if (_editingId === null) return;
+  commitQtyEdit(_editingId);
+}
+
+// ─── MODAL LIMPAR SEMANA ──────────────────────────────────────────────────────
+function showClearModal() {
+  const semNames = ['1ª','2ª','3ª','4ª','5ª'];
+  document.getElementById('clearModalText').textContent = `Zerar todas as contagens da ${semNames[currentWeek-1]} semana?`;
+  document.getElementById('clearModal').classList.add('show');
+}
+function hideModal() { document.getElementById('clearModal').classList.remove('show'); }
+
+async function clearWeek() {
+  if (!currentUser) return;
+  
+  const { error } = await _supabase
+    .from('estoque_bebidas')
+    .delete()
+    .eq('user_id', currentUser.id)
+    .eq('semana', currentWeek);
+
+  if (!error) {
+    DB_STOCK[currentWeek] = {};
+    hideModal();
+    renderContar();
+    showToast('Semana zerada no servidor ✓');
+  }
+}
+
+// ─── TOAST NOTIFICAÇÃO ────────────────────────────────────────────────────────
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 2000);
+}
+
+// ─── ABA RESUMO ───────────────────────────────────────────────────────────────
+function getResumoStock() {
+  if (resumoWeek === 'all') {
+    const merged = {};
+    for (let w = 1; w <= 5; w++) {
+      const s = DB_STOCK[w] || {};
+      Object.entries(s).forEach(([id, qty]) => { merged[id] = (merged[id]||0) + qty; });
+    }
+    return merged;
+  }
+  return DB_STOCK[resumoWeek] || {};
+}
+
+function renderResumoWeekBar() {
+  const wrap = document.getElementById('resumoWeekBar');
+  const opts = [{v:'all',l:'Todas'},{v:1,l:'1ª'},{v:2,l:'2ª'},{v:3,l:'3ª'},{v:4,l:'4ª'},{v:5,l:'5ª'}];
+  wrap.innerHTML = opts.map(o =>
+    `<button class="week-btn ${resumoWeek==o.v?'active':''}" onclick="setResumoWeek('${o.v}')">${o.l}</button>`
+  ).join('');
+}
+
+function setResumoWeek(w) {
+  resumoWeek = isNaN(w) ? w : Number(w);
+  renderResumo();
+}
+
+function renderResumo() {
+  renderResumoWeekBar();
+  const stock = getResumoStock();
+  const missing = [], low = [], ok = [], none = [];
+  CATEGORIES.forEach(cat => {
+    cat.itens.forEach(it => {
+      const qty = stock[it.id] || 0;
+      const min = getMin(it.id);
+      const st = itemStatus(qty, min);
+      const entry = {...it, qty, min, st, cat: cat.nome};
+      if (st === 'missing') missing.push(entry);
+      else if (st === 'low') low.push(entry);
+      else if (st === 'ok') ok.push(entry);
+      else none.push(entry);
+    });
+  });
+
+  document.getElementById('sc-missing').textContent = missing.length;
+  document.getElementById('sc-low').textContent = low.length;
+  document.getElementById('sc-ok').textContent = ok.length;
+
+  let html = '';
+
+  if (missing.length) {
+    html += `<div class="section-title red">🚨 Faltando (${missing.length})</div>`;
+    html += `<div class="alert-cards">`;
+    missing.forEach(it => {
+      const falta = it.min - it.qty;
+      html += `<div class="alert-card missing">
+        <div class="alert-info"><div class="alert-name">${it.nome}</div><div class="alert-detail">mín ${it.min} · falta ${falta}</div></div>
+        <div class="alert-qty">${it.qty}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  if (low.length) {
+    html += `<div class="section-title yellow">⚠️ Baixo (${low.length})</div>`;
+    html += `<div class="alert-cards">`;
+    low.forEach(it => {
+      html += `<div class="alert-card low">
+        <div class="alert-info"><div class="alert-name">${it.nome}</div><div class="alert-detail">mín ${it.min}</div></div>
+        <div class="alert-qty">${it.qty}</div>
+      </div>`;
+    });
+    html += `</div>`;
+  }
+
+  html += `<div class="section-title full">📋 Todos os itens contados</div>`;
+  html += `<table class="full-table"><thead><tr><th>Item</th><th>Qtd</th><th>Status</th></tr></thead><tbody>`;
+  
+  CATEGORIES.forEach(cat => {
+    const catItems = [...missing, ...low, ...ok, ...none].filter(i => i.cat === cat.nome && i.qty > 0);
+    if (!catItems.length) return;
+    html += `<tr class="cat-row"><td colspan="3">${cat.nome}</td></tr>`;
+    catItems.forEach(it => {
+      const badgeClass = it.st;
+      const badgeLabel = it.st === 'missing' ? 'FALTA' : it.st === 'low' ? 'BAIXO' : it.st === 'ok' ? 'OK' : '—';
+      html += `<tr>
+        <td>${it.nome}</td>
+        <td style="font-family:'DM Mono',monospace;font-weight:500">${it.qty}</td>
+        <td><span class="status-badge ${badgeClass}">${badgeLabel}</span></td>
+      </tr>`;
+    });
+  });
+  html += `</tbody></table>`;
+
+  document.getElementById('resumoContent').innerHTML = html;
+}
+
+// ─── EXPORTAÇÃO CSV ───────────────────────────────────────────────────────────
+function exportCSV() {
+  const stock = getResumoStock();
+  const semLabel = resumoWeek === 'all' ? 'Todas as semanas' : `${resumoWeek}ª Semana`;
+  let rows = [['Código','Bebida','Categoria','Qtd','Mínimo','Status']];
+  CATEGORIES.forEach(cat => {
+    cat.itens.forEach(it => {
+      const qty = stock[it.id] || 0;
+      const min = getMin(it.id);
+      const st = itemStatus(qty, min);
+      const stLabel = st === 'missing' ? 'Faltando' : st === 'low' ? 'Baixo' : st === 'ok' ? 'OK' : 'Sem mín';
+      rows.push([it.id, it.nome, cat.nome, qty, min, stLabel]);
+    });
+  });
+  const csv = rows.map(r => r.map(c => `"${String(c).replace(/"/g,'""')}"`).join(',')).join('\n');
+  const blob = new Blob(['\uFEFF'+csv], {type:'text/csv;charset=utf-8;'});
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href = url; a.download = `estoque-bebidas-${semLabel.replace(/\s+/g,'_')}.csv`;
+  a.click(); URL.revokeObjectURL(url);
+  showToast('CSV exportado ✓');
+}
+
+// ─── GERADOR PDF ──────────────────────────────────────────────────────────────
+function gerarPDF() {
+  const { jsPDF } = window.jspdf;
+  if (!jsPDF) { alert('Biblioteca PDF não carregada.'); return; }
+  const stock = getResumoStock();
+  const semLabel = resumoWeek === 'all' ? 'Todas as semanas' : `${resumoWeek}ª Semana`;
+  const now = new Date().toLocaleString('pt-BR');
+
+  const missing = [], low = [], allCounted = [];
+  CATEGORIES.forEach(cat => {
+    cat.itens.forEach(it => {
+      const qty = stock[it.id] || 0;
+      const min = getMin(it.id);
+      const st = itemStatus(qty, min);
+      if (st === 'missing') missing.push({...it, qty, min, cat: cat.nome});
+      if (st === 'low') low.push({...it, qty, min, cat: cat.nome});
+      if (qty > 0) allCounted.push({...it, qty, min, st, cat: cat.nome});
+    });
+  });
+
+  const doc = new jsPDF({ orientation:'p', unit:'mm', format:'a4' });
+  const pw = doc.internal.pageSize.getWidth();
+  let y = 0;
+
+  doc.setFillColor(20,20,20);
+  doc.rect(0, 0, pw, 14, 'F');
+  doc.setTextColor(232,160,32);
+  doc.setFontSize(13);
+  doc.setFont('helvetica','bold');
+  doc.text('BLACK SKULL BIER — ESTOQUE DE BEBIDAS', 8, 9);
+  doc.setFontSize(7);
+  doc.setTextColor(180,180,180);
+  doc.text(`${semLabel} · Gerado em ${now}`, pw - 8, 9, {align:'right'});
+  y = 18;
+
+  const cards = [
+    {label:'FALTANDO', count: missing.length, color:[224,85,85]},
+    {label:'BAIXO', count: low.length, color:[240,192,64]},
+    {label:'OK', count: allCounted.filter(i => i.st==='ok').length, color:[76,175,111]},
+  ];
+  const cw = (pw - 16 - 8) / 3;
+  cards.forEach((c, i) => {
+    const x = 8 + i * (cw + 4);
+    doc.setFillColor(248,248,248);
+    doc.roundedRect(x, y, cw, 12, 2, 2, 'F');
+    doc.setDrawColor(...c.color);
+    doc.setLineWidth(1);
+    doc.line(x, y+1, x, y+11);
+    doc.setLineWidth(0.2);
+    doc.setTextColor(...c.color);
+    doc.setFontSize(14);
+    doc.setFont('helvetica','bold');
+    doc.text(String(c.count), x+5, y+8);
+    doc.setFontSize(6);
+    doc.setTextColor(100,100,100);
+    doc.setFont('helvetica','normal');
+    doc.text(c.label, x+5+8, y+6);
+  });
+  y += 16;
+
+  if (missing.length) {
+    doc.setFontSize(8);
+    doc.setFont('helvetica','bold');
+    doc.setTextColor(180,30,30);
+    doc.text('🚨 FALTANDO', 8, y+4);
+    y += 6;
+    doc.autoTable({
+      startY: y,
+      head: [['Código','Bebida','Categoria','Qtd','Mínimo','Falta']],
+      body: missing.map(it => [it.id, it.nome, it.cat, it.qty, it.min, it.min - it.qty]),
+      styles: { fontSize: 7, cellPadding: 1.5, textColor: [30,30,30] },
+      headStyles: { fillColor: [255,220,220], textColor: [150,0,0], fontStyle:'bold', fontSize:6.5 },
+      alternateRowStyles: { fillColor: [255,245,245] },
+      margin: { left: 8, right: 8 },
+    });
+    y = doc.lastAutoTable.finalY + 4;
+  }
+
+  if (low.length) {
+    doc.setFontSize(8);
+    doc.setFont('helvetica','bold');
+    doc.setTextColor(160,120,0);
+    doc.text('⚠️ ESTOQUE BAIXO', 8, y+4);
+    y += 6;
+    doc.autoTable({
+      startY: y,
+      head: [['Código','Bebida','Categoria','Qtd','Mínimo']],
+      body: low.map(it => [it.id, it.nome, it.cat, it.qty, it.min]),
+      styles: { fontSize: 7, cellPadding: 1.5, textColor: [30,30,30] },
+      headStyles: { fillColor: [255,245,200], textColor: [120,90,0], fontStyle:'bold', fontSize:6.5 },
+      alternateRowStyles: { fillColor: [255,252,230] },
+      margin: { left: 8, right: 8 },
+    });
+    y = doc.lastAutoTable.finalY + 4;
+  }
+
+  doc.setFontSize(8);
+  doc.setFont('helvetica','bold');
+  doc.setTextColor(60,60,60);
+  doc.text('CONTAGEM COMPLETA', 8, y+4);
+  y += 6;
+
+  const tableBody = [];
+  CATEGORIES.forEach(cat => {
+    const catItems = allCounted.filter(i => i.cat === cat.nome);
+    if (!catItems.length) return;
+    tableBody.push([{content: cat.nome.toUpperCase(), colSpan:5, styles:{fillColor:[230,230,230], textColor:[80,80,80], fontStyle:'bold', fontSize:6}}]);
+    catItems.forEach(it => {
+      const stLabel = it.st === 'missing' ? 'FALTA' : it.st === 'low' ? 'BAIXO' : 'OK';
+      const stColor = it.st === 'missing' ? [200,50,50] : it.st === 'low' ? [160,120,0] : [50,150,80];
+      tableBody.push([it.id, it.nome, it.qty, it.min||'—', {content:stLabel, styles:{textColor:stColor, fontStyle:'bold'}}]);
+    });
+  });
+
+  doc.autoTable({
+    startY: y,
+    head: [['Cód.','Bebida','Qtd','Mín.','Status']],
+    body: tableBody,
+    styles: { fontSize: 7, cellPadding: 1.5, textColor: [30,30,30] },
+    headStyles: { fillColor: [20,20,20], textColor: [255,255,255], fontStyle:'bold', fontSize:6.5 },
+    alternateRowStyles: { fillColor: [248,248,248] },
+    margin: { left: 8, right: 8 },
+    didDrawPage: (data) => {
+      doc.setFontSize(6);
+      doc.setTextColor(160,160,160);
+      doc.text('Black Skull Bier — Controle de Estoque', 8, doc.internal.pageSize.getHeight() - 5);
+      doc.text(`Página ${data.pageNumber}`, pw - 8, doc.internal.pageSize.getHeight() - 5, {align:'right'});
+    }
+  });
+
+  doc.save(`estoque-bebidas-${semLabel.replace(/\s+/g,'_')}.pdf`);
+  showToast('PDF gerado ✓');
+}
+
+// ─── ABA MÍNIMOS ──────────────────────────────────────────────────────────────
+function renderMinimos() {
+  const q = (document.getElementById('searchMin').value || '').toLowerCase().trim();
+  let html = '';
+  CATEGORIES.forEach(cat => {
+    const items = cat.itens.filter(it => !q || it.nome.toLowerCase().includes(q) || String(it.id).includes(q));
+    if (!items.length) return;
+    html += `<div class="cat-header" style="margin:0 -10px;padding:14px 22px 6px">${cat.nome}</div>`;
+    items.forEach(it => {
+      const min = getMin(it.id);
+      html += `
+      <div class="min-item">
+        <div class="min-name">
+          <div class="min-name-text">${it.nome}</div>
+          <div class="min-code-text">#${it.id}</div>
+        </div>
+        <div class="min-ctrl">
+          <button class="btn-adj btn-minus" onclick="adjMin(${it.id},-1)">−</button>
+          <input class="min-input ${min===0?'zero':''}" id="min-${it.id}" type="number" min="0" value="${min}"
+            oninput="saveMin(${it.id},this)">
+          <button class="btn-adj btn-plus" onclick="adjMin(${it.id},1)">+</button>
+        </div>
+      </div>`;
+    });
+  });
+  document.getElementById('minimosList').innerHTML = html;
+}
+
+function saveMin(id, input) {
+  const val = parseInt(input.value) || 0;
+  setMin(id, val);
+  input.classList.toggle('zero', val === 0);
+}
+
+function adjMin(id, delta) {
+  const cur = getMin(id);
+  const nv = Math.max(0, cur + delta);
+  setMin(id, nv);
+  const inp = document.getElementById(`min-${id}`);
+  if (inp) { inp.value = nv; inp.classList.toggle('zero', nv === 0); }
+}
+
+// ─── INICIALIZAÇÃO DE SESSÃO ─────────────────────────────────────────────────
+checkUser();
+</script>
+</body>
+</html>
